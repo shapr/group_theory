@@ -1,0 +1,314 @@
+* org-mode configuration
+#+STARTUP: overview
+#+STARTUP: hidestars
+#+STARTUP: logdone
+#+PROPERTY: Effort_ALL 0:10 0:20 0:30 1:00 2:00 4:00 6:00 8:00
+#+COLUMNS: %38ITEM(Details) %TAGS(Context) %7TODO(To Do) %5Effort(Time){:} %6CLOCKSUM{Total}
+#+TAGS: { WORK(w) HOME(h) } SCHOOL(s) LEARN(l) FUN(f) PROFESSIONAL_DEVELOPMENT(p)
+#+SEQ_TODO: TODO(t) STARTED(s) WAITING(w) APPT(a) | DONE(d) CANCELLED(c) DEFERRED(f)
+
+* Group Theory learning and homework.
+
+We're starting from https://www.cse.iitk.ac.in/users/rmittal/prev_course/s15/notes/complete_notes.pdf
+
+* TODO abstract algebra
+reading https://www.cse.iitk.ac.in/users/rmittal/prev_course/s15/notes/complete_notes.pdf
+** STARTED first
+:LOGBOOK:
+CLOCK: [2025-11-17 Mon 09:56]--[2025-11-17 Mon 10:38] =>  0:42
+:END:
+why does theorem 1.5 mention different orderings at all?
+exercise 1.7 says "unique factorization theorem" is that why orderings were mentioned? to be clear that the prime factors are an un-ordered set?
+
+- [ ] exercise 2.5 last bullet point says the /multiplication table/ of the group has entries that denote the *sum* of the i^th and j^th group element.
+  Do they actually mean the *result of the group operation* where they say *sum* ? That's what it looks like to me.
+- [ ] exercise 2.6 does this mean that magic squares and sudoku are tightly related to group theory somehow?
+- [ ] I think the unique row and column property is true for finite groups, not sure about infinite groups.
+** STARTED second
+:LOGBOOK:
+CLOCK: [2025-11-25 Tue 11:05]--[2025-11-25 Tue 13:33] =>  2:28
+:END:
+- [ ] exercise 2.8
+  order of x^-1 is *less* than n
+  the original assertion is that x ∈ G and x^-1 have the same order, thus it should say:
+  order of x^-1 is *less than or equal to* n
+- [ ] exercise 2.9
+  What do you think x^-n should be?
+  it's x^-1 op itself ~n~ times
+  it's the inverse of ~x^n~
+- [ ] Theorem 2.10
+  1,i,-1,-i
+  order of this group is 4 (it has four elements)
+  order of each element is
+  - 1 :: 1 = 1
+    -> order 1
+  - i :: i*i*i*i = 1
+    -> order 4
+  - -1 :: -1 * -1 =1
+    -> order 2
+  - -i ::
+    -i * -i = -1
+    -1 * -i = i
+    i * -i = 1
+    -> order 4
+  order of every element is 1,2, or 4
+  for an example finite group, this passes the sanity check, this shows we understand what the question is asking
+  NOW, ON TO THE PROOF
+  Flower says: any element of a group to the power of the order of the group is always the identity.
+  That works in the four element group above.
+  I think that's what this theorem is saying?
+  Wait, what's S_x again? S is a set, as described in section 2.0
+  Is this set the permutation group? permutation is mentioned in the proof.
+  AHA
+  if you multiple all the group elements by one of the elements, you get a permutation of the order of the group elements!
+
+  $e$ is a common notation for the identity element
+  capital pi is product, multiply things
+  for each s in S_x, multiply s
+  S elements are the same as G, just in a diff order
+  first equation gives us one group element
+  -i * i * -1 * 1 = 1
+  this is not always the case
+
+  This is called LaGrange's Theorem! hurrah!
+** STARTED third
+:LOGBOOK:
+CLOCK: [2025-12-02 Tue 08:47]--[2025-12-02 Tue 09:59] =>  1:12
+:END:
+2.3 isomorphism and homomorphism of a group
+two sets are equal iff there is a bijection between them.
+but the bijection need not respect composition.
+Wait, where/when did composition show up here?
+The composition properties of two groups might be completely different even if they have a bijection between them.
+- isomorphism :: structure preserving mapping between two structures
+- homomorphism :: structure preserving map between two algebraic structures of the same type
+- bijection :: same number of elements, with a 1 to 1 mapping
+homework!
+- [ ] exercise 2.12
+  would you say that groups (Z_4,+) and (Z^+_8,x) are similar?
+  I think Z_4,+ is
+  0,1,2,3 right?
+  set of all remainders modulu 8 that are coprime to 8 though?
+  1,3,5,7 I think?
+  hint: look at the orders of the elements in these groups
+  For (Z_4,+) identity is 0
+  0 is identity, order is 1
+  1 + 1 + 1 + 1 = 4 -> 0, order is 4
+  2 + 2 = 4 -> 0 order is 2
+  3 + 3 + 3 + 3 = 12 -> 0, order is 4
+  For $$(Z^+_8,x)$$ identity is 1
+  1 is the identity, order is 1
+  3 * 3 = 9 mod 8 is 1, order is 2
+  5 * 5 = 25 mod 8 is 1, order is 2
+  7 * 7 = 49 mod 8 is 1, order is 2
+- [X] exercise 2.13
+  My first guess is that mapping every element of G1 to the identity element of G1 might be a homomorphism that is not an isomorphism.
+  But, that does collapse the group into the trivial group, is that still structure preserving?
+- [ ] exercise 2.14
+  For any a_1,a_2, ... ,a_k ∈ G, show that the expression a_1 * a_2 * ... * a_k is independent of bracketing
+  isn't this a given because group properties require this anyway?
+  Mark says: The group properties are only given with three elements and two sets of bracketing!
+
+- [X] 2.15
+  this was given earlier wasn't it? oh that was unique inverse from 2.7
+  Proof:
+  suppose a group has two identity elements, then $e1 a = e2 a$ and we can factor out the $a$ to get $e1 = e2$
+  and we're done?
+- [ ] which groups are commutative from the list in section 2.1.1 ?
+  - commutative under addition
+    - integers
+    - rationals
+    - reals
+    - complex
+  - commutative under multiplication, *without zero* !
+    - integers
+    - rationals
+    - reals
+    - complex
+  - NOT commutative
+    - multiplication with zero (WRONG, this is only important for the *inverse*!)
+    - dihedral group (gotta swap the rotate and flip operations!)
+      There's an exception! There is one dihedral group that is commutative.
+      Two points, two edges, the flip and the rotation are exactly the same, so they have to commute!
+      is it a polygon? polygon implies straight edges?
+  - I'm not sure!
+    - permutations (aka symmetric group) see [[https://en.wikipedia.org/wiki/Cayley's_theorem][Cayley's Theorem]] for more
+      fundamental example
+    - n x n matrices - not commutative!
+      another exception! 1 x 1 matrices are commutitive (and isomorphic to real numbers)
+- [ ] prove that $$G = \{a+b\sqrt{2}|a,b \in \mathbb{Q}\}$$ is a group under addition.
+  What's Q? Q is for quotients! It's rational numbers!
+  what are the require group properties again?
+  from 2.1:
+  - closure
+  - associativity
+  - identity
+  - inverse
+  I think this is the existing group of rationals under addition, except one term is multiplied by \sqrt{2} ?
+  can I just factor that out?
+- [ ] side quest! what about the group above with *multiplication* !
+** STARTED fourth
+:LOGBOOK:
+CLOCK: [2025-12-07 Sun 13:27]--[2025-12-07 Sun 13:27] =>  0:00
+:END:
+Mark says that if all elements of a group have order 2, the group must be abelian.
+If a group is not abelian, there must be at least one non-order 2 element.
+How the heck would I prove that?
+
+Oh hey, while reading about Cayley tables, I read https://en.wikipedia.org/wiki/Cayley_table#Commutativity
+that the group operation is commutative if the table is symmetric along its diagonal axis!
+Is there a jump from there to the puzzle above? I don't think so 🤔
+*** STARTED read about isomorphisms from Mark
+SCHEDULED: <2025-12-07 Sun>
+:LOGBOOK:
+CLOCK: [2025-12-07 Sun 13:27]--[2025-12-07 Sun 13:44] =>  0:17
+:END:
+Isomorphisms have a mostly algebraic explanation.
+
+*Two groups are isomorphic if they are really the same group, but their elements have different names.*
+
+For example:
+
+exercises
+- [ ] 1. a second different function that is also an isomorphism between these two groups
+  is it the converse?
+  oh wait, it's $$i^n$$ ! wait, that's the same thing!
+  converse is the only thing I can think up!
+- [ ] suppose <G,*> and <H,#> are groups, and f is a bijective function from G to H.
+** DONE fifth [7/11]
+CLOSED: [2025-12-09 Tue 11:57]
+:LOGBOOK:
+CLOCK: [2025-12-09 Tue 08:33]--[2025-12-09 Tue 11:57] =>  3:24
+CLOCK: [2025-12-08 Mon 21:41]--[2025-12-08 Mon 22:32] =>  0:51
+:END:
+required group properties:
+- closure
+- associativity
+- identity
+- inverse
+exercise 2.18 which are groups under addition?
+- [X] set of all rational numbers with absolute value <1 *NO*
+  associative yes, identity yes, inverse yes, closure NO?
+  I can add two rationals and end up with numbers that go outside the range, unless we're talking mod -1 or mod 1 ? How would that work?
+- [X] set of all rational numbers with absolute value => 1 *NO*
+  No, identity is 0/0 and that's below 1
+- [X] set of all rational numbers with denominator either 1 or 2 in the reduced form *YES*
+  For rational numbers with denominator 1, yes, as that maps directly to whole numbers which is already a group.
+  For denominator 2, closure yes, identity 0/1 yes, inverse will be negative numbers, yes, associativity yes
+  IT IS A GROUP!
+exercise 2.19 find the order of the following
+- [X] 3 in $$Z_5,+$$ *order 5*
+  this group has elements 0,1,2,3,4
+  3 + 3 + 3 + 3 + 3 = 15 and that's 0 mod 5
+- [X] 5 in $$Z_7,\times$$ *order 6*
+  that is, non-zero elements mod 7 with 1 as identity(\x -> (x, x `mod` 7)) <$> (take 6 $ iterate (*5) 5)
+  this group has elements 1,2,3,4,5,6
+  5 * 5 * 5 * 5 * 5 * 5 = 15625
+  (\x -> (x, x `mod` 7)) <$> (take 6 $ iterate (*5) 5)
+- [ ] transpositions in permutations, product of disjoint transpositions.
+  I don't know what these mean! *ASK*
+  I know about permutation groups, isn't transposition a rotation of a square matrix?
+  - [ ] what's a transposition here? same thing as with a matrix? NO https://en.wikipedia.org/wiki/Cyclic_permutation#Transpositions
+exercise 2.20 give an example of a finite group where order of an element is different from order of the group
+- [X] different? as in not equal? or not related by multiplicative factor, or what?
+  $$Z_7,\times$$ any identity has order zero, and any group with an identity has at least one element, is that enough?
+exercise 2.21 if all elements have order 2 for a group G, prove that it is abelian
+- [ ] hint from Reed Mullanix:
+  Let $$(M,*,1)$$ be a monoid, a 2-sided inverse of an element $$x:M$$ is an element such that $$x*y=1$$ and $$y*x=1$$
+  show that an element x has at most one two sided inverse, e.g. if y and z are both two sided inverses of x then y=z.
+  mark says algebraic
+- [X] exercise 2.22 show that if G_1 is isomorphic to G_2 then G_2 is isomorphic to G_1
+  isomorphism requires a bijection by definition, is a bijection necessarily invertible? wikipedia says bijection requires being invertible
+  So, I'm gonna say by the invertible requirement of a bijection, an isomorphism is, uh, invertible?
+  must also show that the inverted bijection demonstrates the isomorphic property on page 8
+- [ ] exercise 2.23 show an isomorphism from real numbers with addition to positive real numbers with multiplication
+  first we need a bijection, hm
+  identity is 0 for addition, and 1 for multiplication, could the compact isomorphism be $$n \rightleftarrow n+1$$ ?
+  That is, 0 is mapped to 1, and all additive group numbers are incremented by one?
+  can't just add one to everything, but the identity part is right!
+  0 -> 1 yes
+  1 -> 2 no! (does exist in one isomorphism, but "add one to every real number" just isn't an isomorphism)
+  need, for all real numbers a and b, that if a+b=c then f(a)·f(b) = f(c) -- Mark
+
+questions:
+- [ ] Waitasec, are Cayley tables related to permutations? Certainly seems reasonable?
+  <2025-12-16 Tue 08:54> from Mark's email: "all groups can be understood as groups of permutations"
+** homework for next time
+Exercise 2.23 says:
+
+ Show an isomorphism from real numbers with addition to positive real numbers with multiplication.
+
+This means we want a function f which is a bijection between all real numbers and positive real numbers: that means
+that if a is a real number, f(a) should be a positive real number.
+
+And also this bijection f should have the important isomorphism property:
+
+ for all real numbers a, b, and c,
+ whenever a+b = c
+ we also have f(a)·f(b) = f(c)
+
+Shae suggested that f(x) = x+1 would work, but it's not what was asked for.
+
+First, it's not a bijection between the real numbers and the positive real numbers, because f(x) should always be a positive
+real number, but f(-23) is not positive.
+
+And even more important, it doesn't have the isomorphism property.  For example, because 1+1=2, the function f will
+only be an isomorphism if we have f(1)·f(1) = f(2).  But if f(x) = x+1, this says that 2·2=3.  So this f is not an isomorphism.
+
+To approach this, here's what I suggest.  Ignore the bijection property temporarily and focus on the isomorphism
+property:
+
+1 Consider just 0+b=b.  For f to be an isomorphism, we would need f(0)·f(b) = f(b) for all b.  What can we conclude from
+ this about f(0)?
+2 The value of f(1) is more mysterious.  We don't know what it is yet.  Let's try f(1)=2 as Shae suggested and see if we can
+ make it work.  If we do, then what's f(2)?  We saw above that f(2)=3 does not work if f is going to be an isomorphism.
+ Instead we need f(2) = f(1+1) = f(1) · f(1). So if as we said f(1) = 2 then f(2) = ??
+3 Try to figure out f(3) the same way.
+** STARTED sixth
+:LOGBOOK:
+CLOCK: [2025-12-15 Mon 11:18]--[2025-12-15 Mon 12:15] =>  0:57
+:END:
+SUBGROUPS!
+There are two trivial subgroups!
+The identity of a group, and the group itself!
+
+Exercise 3.1 Can we have a subset of a group which is itself a group under the group operation? Try to construct such a set in Z
+
+- multiples of 2
+- the trivial group of Z, that is, the identity element
+- others that I didn't write down! oh no!
+
+- [ ] Exercise 3.4, why did we not consider associativity, existence of inverse?
+  answer: because they can be assumed by the original group!
+
+For exercise 3.4 bullet points, we have a new idea: CENTER OF A GROUP!
+
+There's a difference between "here are my assumptions" and "here's what I'm proving"
+*** center of a group
+- center of a group :: the set of elements which commute with every element of G
+$$C(G) = \{ h \in G : hg = gh, \forall g \in G\}$$
+by construction, C contains all of the ~h~ for which this statement is true
+"we will show that the center is a subgroup"
+Suppose $$h,k \in C(G)$$ then for any $$g\in G$$:
+$$g(hk) = hgk = (hk)g$$
+
+- [ ] WAIT A SEC! doesn't this mean the ~h~ and ~k~ elements are also commutative?
+  doesn't it make more sense to show those elements commuted in the previous equation?
+  Is there any reason not to show those elements commuted in the previous equation?
+
+What are the properties of a group?
+- closure
+- associativity
+- identity
+- inverse
+Which ones do we already have?
+- [X] associativity - follows because we started with a group, and will continue to be true for any subset, whether it counts as a subgroup or not!
+- [X] identity - I don't know if we proved that the identity element is commutative, but I know that $$eg = ge$$, so it works!
+- [ ] closure - every element of a group that commutes with every other element of the group, will commute with any commutative elements, so that subset will have closure (needs a proof?)
+- [ ] inverse -
+
+- my thoughts on subgroups:
+What we have so far, is a set builder of all elements that are immediately commutative.
+We have two cases, an abelian group, and a non-abelian group.
+For an abelian group, where all elements are already commutative, the entire group is also the center of the group.
+For a non-abelian group, I know the identity will be part of the center, dunno about the rest?
