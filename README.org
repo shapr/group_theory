@@ -158,6 +158,11 @@ How the heck would I prove that?
 Oh hey, while reading about Cayley tables, I read https://en.wikipedia.org/wiki/Cayley_table#Commutativity
 that the group operation is commutative if the table is symmetric along its diagonal axis!
 Is there a jump from there to the puzzle above? I don't think so 🤔
+
+I gave up and found an answer on math.stackexchange: https://math.stackexchange.com/a/17057/6514
+
+
+
 *** STARTED read about isomorphisms from Mark
 SCHEDULED: <2025-12-07 Sun>
 :LOGBOOK:
@@ -175,7 +180,9 @@ exercises
   oh wait, it's $$i^n$$ ! wait, that's the same thing!
   converse is the only thing I can think up!
 - [ ] suppose <G,*> and <H,#> are groups, and f is a bijective function from G to H.
-** DONE fifth [7/11]
+
+I'm thinking the shape of the Cayley table tells you if one group is isomorphic to another?
+** DONE fifth [8/12]
 CLOSED: [2025-12-09 Tue 11:57]
 :LOGBOOK:
 CLOCK: [2025-12-09 Tue 08:33]--[2025-12-09 Tue 11:57] =>  3:24
@@ -212,8 +219,28 @@ exercise 2.19 find the order of the following
 exercise 2.20 give an example of a finite group where order of an element is different from order of the group
 - [X] different? as in not equal? or not related by multiplicative factor, or what?
   $$Z_7,\times$$ any identity has order zero, and any group with an identity has at least one element, is that enough?
-exercise 2.21 if all elements have order 2 for a group G, prove that it is abelian
-- [ ] hint from Reed Mullanix:
+- [ ] exercise 2.21 if all elements have order 2 for a group G, prove that it is abelian
+  $$\forall x,y \in G, e = (xy)^2 = xyxy$$
+  from https://math.stackexchange.com/a/814423/6514
+  every element is of order 2 is equivalent to "every element is its own inverse".
+  Since inverses are unique, then commutativity is the observation that $$abba$$ is the identity for any a and b in the group.
+  because it shows that ba is the inverse of ab!
+  *I GET IT!*
+  proof from https://math.stackexchange.com/q/275544/6514
+  $$a\cdot b = (b \cdot b) \cdot (a \cdot b) \cdot (a \cdot a) = b \cdot (b \cdot a) \cdot (b \cdot a) \cdot a = b \cdot a$$
+  $$(b \cdot a) \cdot (b \cdot a)$$ becomes the identity!
+  explained by mark: (b . a) . (b . a) will produce two of the same element of the group. We known that any element of the group multiplied by itself is the identity
+  ( multi step latex Often it's :
+  \begin{align}
+  a & = b \\
+   & = c \\
+   …
+   \end{align}  )
+  proof from Mark:
+  I was going to suggest that:
+  (ba)² = 1, therefore :
+  ab = ab(ba)² = (ab)(ba)(ba) = (a(bb)a)(ba) = (aa)(ba) = ba.
+- [X] hint from Reed Mullanix:
   Let $$(M,*,1)$$ be a monoid, a 2-sided inverse of an element $$x:M$$ is an element such that $$x*y=1$$ and $$y*x=1$$
   show that an element x has at most one two sided inverse, e.g. if y and z are both two sided inverses of x then y=z.
   mark says algebraic
@@ -233,7 +260,7 @@ exercise 2.21 if all elements have order 2 for a group G, prove that it is abeli
 questions:
 - [ ] Waitasec, are Cayley tables related to permutations? Certainly seems reasonable?
   <2025-12-16 Tue 08:54> from Mark's email: "all groups can be understood as groups of permutations"
-** homework for next time
+** TODO homework for next time
 Exercise 2.23 says:
 
  Show an isomorphism from real numbers with addition to positive real numbers with multiplication.
@@ -278,12 +305,16 @@ Exercise 3.1 Can we have a subset of a group which is itself a group under the g
 - the trivial group of Z, that is, the identity element
 - others that I didn't write down! oh no!
 
-- [ ] Exercise 3.4, why did we not consider associativity, existence of inverse?
-  answer: because they can be assumed by the original group!
+- [X] Exercise 3.4, why did we not consider associativity, existence of inverse?
+  answer: because they are already present in the original group elements!
 
 For exercise 3.4 bullet points, we have a new idea: CENTER OF A GROUP!
 
 There's a difference between "here are my assumptions" and "here's what I'm proving"
+
+- [X] when a group theory text says "closed under multiplication" does ~multiplication~ mean the group operation?
+  YES it does!
+- [ ]
 *** center of a group
 - center of a group :: the set of elements which commute with every element of G
 $$C(G) = \{ h \in G : hg = gh, \forall g \in G\}$$
@@ -292,10 +323,10 @@ by construction, C contains all of the ~h~ for which this statement is true
 Suppose $$h,k \in C(G)$$ then for any $$g\in G$$:
 $$g(hk) = hgk = (hk)g$$
 
-- [ ] WAIT A SEC! doesn't this mean the ~h~ and ~k~ elements are also commutative?
+- [X] WAIT A SEC! doesn't this mean the ~h~ and ~k~ elements are also commutative?
   doesn't it make more sense to show those elements commuted in the previous equation?
   Is there any reason not to show those elements commuted in the previous equation?
-
+  YES, that equation isn't proving what I thought it was!
 What are the properties of a group?
 - closure
 - associativity
@@ -304,7 +335,8 @@ What are the properties of a group?
 Which ones do we already have?
 - [X] associativity - follows because we started with a group, and will continue to be true for any subset, whether it counts as a subgroup or not!
 - [X] identity - I don't know if we proved that the identity element is commutative, but I know that $$eg = ge$$, so it works!
-- [ ] closure - every element of a group that commutes with every other element of the group, will commute with any commutative elements, so that subset will have closure (needs a proof?)
+- [X] closure - every element of a group that commutes with every other element of the group, will commute with any commutative elements, so that subset will have closure (needs a proof?)
+  the proof I was grumpy about above proves that if h commutes with every g, and k commutes with every g, then hk op'd together will commute with every g, and thus the Center has closure.
 - [ ] inverse -
 
 - my thoughts on subgroups:
