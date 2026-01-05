@@ -1,0 +1,15 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/shae/build/group_theory/README.org
+
+
+* indirect discussions from previous meetings
+:PROPERTIES:
+:ARCHIVE_TIME: 2025-12-20 Sat 09:04
+:ARCHIVE_FILE: ~/build/group_theory/README.org
+:ARCHIVE_OLPATH: abstract algebra
+:ARCHIVE_CATEGORY: README
+:END:
+I found a theorem on a group theory page from stanford that said something about the composition of the order of group elements being the order of the group.
+That seemed surprising, something about $$x^vy^u = z^{vu}$$
